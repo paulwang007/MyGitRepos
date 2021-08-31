@@ -1,0 +1,9 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply from: '../common-build.gradle'
+
+dependencies {
+    implementation project(":core-network")
+}

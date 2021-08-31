@@ -1,0 +1,13 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "AndroidStarter"
+include ':app'
+include ':dynamicfeature'
+include ':core-network'
+include ':core-repository'
+include ':core-logic'

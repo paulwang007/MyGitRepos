@@ -1,0 +1,12 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply from:'../common-build.gradle'
+
+android {
+}
+
+dependencies {
+    implementation project(":core-repository")
+}
