@@ -1,12 +1,12 @@
-package com.paul.wang.androidstarter.activity
+package com.paul.wang.mygitrepo.activity
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.paul.wang.androidstarter.R
-import com.paul.wang.androidstarter.databinding.ActivityMainBinding
 import com.paul.wang.core_logic.MainViewModel
+import com.paul.wang.mygitrepo.R
+import com.paul.wang.mygitrepo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

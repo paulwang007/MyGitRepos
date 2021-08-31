@@ -1,4 +1,4 @@
-package com.paul.wang.androidstarter
+package com.paul.wang.mygitrepo
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

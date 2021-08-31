@@ -5,7 +5,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "AndroidStarter"
+rootProject.name = "MyGitRepos"
 include ':app'
 include ':dynamicfeature'
 include ':core-network'

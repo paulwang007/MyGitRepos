@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.paul.wang.androidstarter"
+<manifest package="com.paul.wang.mygitrepo"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
@@ -33,7 +33,7 @@
             >
             <!-- This entry makes ExampleLoggerInitializer discoverable. -->
             <meta-data
-                android:name="com.paul.wang.androidstarter.LoggingInitializer"
+                android:name="com.paul.wang.mygitrepo.LoggingInitializer"
                 android:value="androidx.startup"
                 tools:node="merge"
                 />

@@ -1,4 +1,4 @@
-package com.paul.wang.androidstarter
+package com.paul.wang.mygitrepo
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.paul.wang.androidstarter
+package com.paul.wang.mygitrepo
 
 import android.app.Application
 import android.content.Context
