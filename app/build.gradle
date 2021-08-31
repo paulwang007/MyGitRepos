@@ -6,26 +6,8 @@ apply from: '../common-build.gradle'
 
 android {
     defaultConfig {
-        applicationId "com.paul.wang.mygitrepos"
+        applicationId "com.paul.wang.androidstartersingleapp"
         versionCode 1
         versionName "0.0"
     }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            minifyEnabled false
-        }
-    }
-
-    dynamicFeatures = [':dynamicfeature']
-}
-
-
-dependencies {
-    implementation project(":core-logic")
 }

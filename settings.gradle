@@ -7,7 +7,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyGitRepos"
 include ':app'
-include ':dynamicfeature'
-include ':core-network'
-include ':core-repository'
-include ':core-logic'
