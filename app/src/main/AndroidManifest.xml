@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AndroidStarter"
         >
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.paul.wang.mygitrepo.mainscreen.MainActivity"
             android:exported="true"
             >
             <intent-filter>
