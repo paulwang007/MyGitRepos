@@ -13,12 +13,16 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
+    private val mainAdapter by lazy { MainRepoListAdapter() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.viewmodel = mainViewModel
-        binding.mainRecyclerView.adapter = MainRepoListAdapter()
+        binding.mainRecyclerView.adapter = mainAdapter
 
-        mainViewModel.getRepo()
+        mainViewModel.repoListLiveData.observe(this, { repoNameList ->
+            mainAdapter.dataList = repoNameList
+            mainAdapter.notifyDataSetChanged()
+        })
     }
 }
