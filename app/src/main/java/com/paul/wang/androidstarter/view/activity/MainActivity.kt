@@ -26,9 +26,4 @@ class MainActivity : AppCompatActivity() {
             mainAdapter.notifyDataSetChanged()
         })
     }
-
-    override fun onDestroy() {
-        mainViewModel.clearDisposable()
-        super.onDestroy()
-    }
 }

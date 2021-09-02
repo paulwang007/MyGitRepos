@@ -20,8 +20,9 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         repoNameList
     }
 
-    fun clearDisposable() {
+    override fun onCleared() {
         disposable.clear()
+        super.onCleared()
     }
 
     private fun getRepoData(repoNameList: MutableLiveData<List<String>>) {
