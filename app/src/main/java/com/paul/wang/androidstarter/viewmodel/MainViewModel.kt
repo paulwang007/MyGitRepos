@@ -9,13 +9,14 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
+import java.net.URL
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
     private val disposable = CompositeDisposable()
-    val repoListLiveData: LiveData<RepoItemData> by lazy {
-        val repoNameList = MutableLiveData<RepoItemData>()
+    val repoListLiveData: LiveData<List<RepoItemData>> by lazy {
+        val repoNameList = MutableLiveData<List<RepoItemData>>()
         getRepoData(repoNameList)
         repoNameList
     }
@@ -25,21 +26,21 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         super.onCleared()
     }
 
-    private fun getRepoData(repoNameList: MutableLiveData<RepoItemData>) {
+    private fun getRepoData(repoNameList: MutableLiveData<List<RepoItemData>>) {
         mainRepository.getRepoData()
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.computation())
             .map { githubRepoResponse ->
                 Timber.tag("on_thread").d("getRepoData.map{} ${Thread.currentThread()}")
-                val pairList = mutableListOf<Pair<String, String>>()
+                val repoItemDataList = mutableListOf<RepoItemData>()
                 githubRepoResponse.forEach { githubItem ->
-                    val pair = Pair(githubItem.name, githubItem.description)
-                    pairList.add(pair)
+                    val repoItem = RepoItemData(githubItem.name, githubItem.description, URL(githubItem.html_url))
+                    repoItemDataList.add(repoItem)
                 }
-                RepoItemData(pairList)
+                repoItemDataList
             }
-            .subscribeWith(object : DisposableObserver<RepoItemData>() {
-                override fun onNext(t: RepoItemData) {
+            .subscribeWith(object : DisposableObserver<List<RepoItemData>>() {
+                override fun onNext(t: List<RepoItemData>) {
                     Timber.tag("on_thread").d("getRepoData.onNext{} ${Thread.currentThread()}")
                     repoNameList.postValue(t)
                 }

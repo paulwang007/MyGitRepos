@@ -1,3 +1,5 @@
 package com.paul.wang.androidstarter.viewmodel
 
-data class RepoItemData(val pairList: List<Pair<String, String>>)
+import java.net.URL
+
+data class RepoItemData(val title: String, val description: String?, val htmlUrl: URL)

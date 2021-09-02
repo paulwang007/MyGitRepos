@@ -3,13 +3,17 @@ package com.paul.wang.androidstarter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.paul.wang.androidstarter.databinding.RepoItemBinding
 import com.paul.wang.androidstarter.viewmodel.RepoItemData
 
-class MainRepoListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
-    var repoItemData: RepoItemData? = null
+/**
+ * Takes an lambda function as a click listener.
+ */
+class MainRepoListAdapter(private val onItemClick: (RepoItemData) -> Unit) : RecyclerView.Adapter<RepoItemViewHolder>() {
+    var repoItemData: List<RepoItemData>? = null
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -17,18 +21,35 @@ class MainRepoListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder {
         val binding = DataBindingUtil.inflate<RepoItemBinding>(LayoutInflater.from(parent.context), R.layout.repo_item, parent, false)
-        return RepoItemViewHolder(binding)
+        // Pass the click listener to the ViewHolder.
+        return RepoItemViewHolder(binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: RepoItemViewHolder, position: Int) {
-        holder.repoName.text = repoItemData?.pairList?.get(position)?.first
-        holder.repoDescription.text = repoItemData?.pairList?.get(position)?.second
+        holder.repoName.text = repoItemData?.get(position)?.title
+        holder.repoDescription.text = repoItemData?.get(position)?.description
+        // No need to create a new listener and bind the listener to the view here.
+        // Only bind data needed to the onclick listener.
+        holder.repoItemData = repoItemData?.get(position)
     }
 
-    override fun getItemCount(): Int = repoItemData?.pairList?.size ?: 0
+    override fun getItemCount(): Int = repoItemData?.size ?: 0
 }
 
-class RepoItemViewHolder(itemBinding: RepoItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
+class RepoItemViewHolder(itemBinding: RepoItemBinding, private val onItemClick: (RepoItemData) -> Unit) :
+    RecyclerView.ViewHolder(itemBinding.root) {
+    // Binding Views
+    var item: ConstraintLayout = itemBinding.repoItem
     var repoName: TextView = itemBinding.repoName
     var repoDescription: TextView = itemBinding.repoDescription
+
+    // Binding Data
+    var repoItemData: RepoItemData? = null
+
+    init {
+        // Set OnClickListener
+        item.setOnClickListener {
+            repoItemData?.run(onItemClick)
+        }
+    }
 }
