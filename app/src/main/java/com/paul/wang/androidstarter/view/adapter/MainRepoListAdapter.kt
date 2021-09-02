@@ -10,6 +10,10 @@ import com.paul.wang.androidstarter.viewmodel.RepoItemData
 
 class MainRepoListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
     var repoItemData: RepoItemData? = null
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder {
         val binding = DataBindingUtil.inflate<RepoItemBinding>(LayoutInflater.from(parent.context), R.layout.repo_item, parent, false)

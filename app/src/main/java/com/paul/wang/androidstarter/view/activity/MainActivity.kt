@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.repoListLiveData.observe(this, { repoNameList ->
             mainAdapter.repoItemData = repoNameList
-            mainAdapter.notifyDataSetChanged()
         })
     }
 }
