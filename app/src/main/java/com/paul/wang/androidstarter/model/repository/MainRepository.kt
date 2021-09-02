@@ -1,7 +1,7 @@
 package com.paul.wang.androidstarter.model.repository
 
-import com.paul.wang.androidstarter.model.data.GithubRepoResponse
 import com.paul.wang.androidstarter.model.network.GithubService
+import com.paul.wang.androidstarter.model.response.GithubRepoResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Retrofit
 import timber.log.Timber

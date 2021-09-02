@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainRecyclerView.adapter = mainAdapter
 
         mainViewModel.repoListLiveData.observe(this, { repoNameList ->
-            mainAdapter.dataList = repoNameList
+            mainAdapter.repoItemData = repoNameList
             mainAdapter.notifyDataSetChanged()
         })
     }

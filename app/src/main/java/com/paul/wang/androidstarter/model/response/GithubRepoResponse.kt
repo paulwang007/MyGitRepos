@@ -1,4 +1,4 @@
-package com.paul.wang.androidstarter.model.data
+package com.paul.wang.androidstarter.model.response
 
 class GithubRepoResponse : ArrayList<GithubRepoResponseItem>()
 data class GithubRepoResponseItem(

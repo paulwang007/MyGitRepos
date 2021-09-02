@@ -14,8 +14,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
     private val disposable = CompositeDisposable()
-    val repoListLiveData: LiveData<List<String>> by lazy {
-        val repoNameList = MutableLiveData<List<String>>()
+    val repoListLiveData: LiveData<RepoItemData> by lazy {
+        val repoNameList = MutableLiveData<RepoItemData>()
         getRepoData(repoNameList)
         repoNameList
     }
@@ -25,19 +25,21 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         super.onCleared()
     }
 
-    private fun getRepoData(repoNameList: MutableLiveData<List<String>>) {
+    private fun getRepoData(repoNameList: MutableLiveData<RepoItemData>) {
         mainRepository.getRepoData()
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.computation())
             .map { githubRepoResponse ->
                 Timber.tag("on_thread").d("getRepoData.map{} ${Thread.currentThread()}")
-
-                val nameList = mutableListOf<String>()
-                githubRepoResponse.forEach { githubItem -> nameList.add(githubItem.full_name) }
-                nameList
+                val pairList = mutableListOf<Pair<String, String>>()
+                githubRepoResponse.forEach { githubItem ->
+                    val pair = Pair(githubItem.name, githubItem.description)
+                    pairList.add(pair)
+                }
+                RepoItemData(pairList)
             }
-            .subscribeWith(object : DisposableObserver<List<String>>() {
-                override fun onNext(t: List<String>) {
+            .subscribeWith(object : DisposableObserver<RepoItemData>() {
+                override fun onNext(t: RepoItemData) {
                     Timber.tag("on_thread").d("getRepoData.onNext{} ${Thread.currentThread()}")
                     repoNameList.postValue(t)
                 }

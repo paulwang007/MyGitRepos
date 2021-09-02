@@ -6,9 +6,10 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.paul.wang.androidstarter.databinding.RepoItemBinding
+import com.paul.wang.androidstarter.viewmodel.RepoItemData
 
 class MainRepoListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
-    var dataList: List<String>? = null
+    var repoItemData: RepoItemData? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder {
         val binding = DataBindingUtil.inflate<RepoItemBinding>(LayoutInflater.from(parent.context), R.layout.repo_item, parent, false)
@@ -16,12 +17,14 @@ class MainRepoListAdapter : RecyclerView.Adapter<RepoItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RepoItemViewHolder, position: Int) {
-        holder.title?.text = dataList?.get(position)
+        holder.repoName.text = repoItemData?.pairList?.get(position)?.first
+        holder.repoDescription.text = repoItemData?.pairList?.get(position)?.second
     }
 
-    override fun getItemCount(): Int = dataList?.size ?: 0
+    override fun getItemCount(): Int = repoItemData?.pairList?.size ?: 0
 }
 
 class RepoItemViewHolder(itemBinding: RepoItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
-    var title: TextView? = itemBinding.repoName
+    var repoName: TextView = itemBinding.repoName
+    var repoDescription: TextView = itemBinding.repoDescription
 }

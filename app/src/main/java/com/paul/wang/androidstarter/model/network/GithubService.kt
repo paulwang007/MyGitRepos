@@ -1,6 +1,6 @@
 package com.paul.wang.androidstarter.model.network
 
-import com.paul.wang.androidstarter.model.data.GithubRepoResponse
+import com.paul.wang.androidstarter.model.response.GithubRepoResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
