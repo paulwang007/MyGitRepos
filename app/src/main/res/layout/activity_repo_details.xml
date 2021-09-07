@@ -6,6 +6,10 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.paul.wang.androidstarter.view.adapter.RepoDetailsViewModel"
+            />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +37,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/repoTitle"
             tools:text="Repo title"
+            />
+
+        <TextView
+            android:id="@+id/ownerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewmodel.repoDetailsLiveData.owner}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repoDescription"
+            tools:text="Repo Owner"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
