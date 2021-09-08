@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.paul.wang.androidstarter.MainRepoListAdapter
 import com.paul.wang.androidstarter.R
 import com.paul.wang.androidstarter.databinding.ActivityMainBinding
+import com.paul.wang.androidstarter.view.adapter.MainRepoListAdapter
 import com.paul.wang.androidstarter.viewmodel.MainViewModel
 import com.paul.wang.androidstarter.viewmodel.RepoItemData
 import dagger.hilt.android.AndroidEntryPoint

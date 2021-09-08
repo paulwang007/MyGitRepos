@@ -1,4 +1,4 @@
-package com.paul.wang.androidstarter
+package com.paul.wang.androidstarter.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.paul.wang.androidstarter.R
 import com.paul.wang.androidstarter.databinding.RepoItemBinding
 import com.paul.wang.androidstarter.viewmodel.RepoItemData
 
