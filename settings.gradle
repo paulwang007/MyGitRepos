@@ -7,3 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MyGitRepos"
 include ':app'
+include ':viewmodel'
+include ':model'

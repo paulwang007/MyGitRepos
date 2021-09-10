@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.paul.wang.androidstarter.R
 import com.paul.wang.androidstarter.databinding.RepoItemBinding
-import com.paul.wang.androidstarter.viewmodel.RepoItemData
+import com.paul.wang.viewmodel.RepoItemData
 
 /**
  * Takes an lambda function as a click listener.

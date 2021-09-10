@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.paul.wang.androidstarter.R
 import com.paul.wang.androidstarter.databinding.ActivityMainBinding
 import com.paul.wang.androidstarter.view.adapter.MainRepoListAdapter
-import com.paul.wang.androidstarter.viewmodel.MainViewModel
-import com.paul.wang.androidstarter.viewmodel.RepoItemData
+import com.paul.wang.viewmodel.MainViewModel
+import com.paul.wang.viewmodel.RepoItemData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
