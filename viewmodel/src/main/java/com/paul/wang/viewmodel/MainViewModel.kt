@@ -3,11 +3,16 @@ package com.paul.wang.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.paul.wang.model.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.net.URL
 import javax.inject.Inject
@@ -21,9 +26,21 @@ class MainViewModel @Inject constructor(private val mainRepository: MainReposito
         repoNameList
     }
 
+    // An easy way to init LiveData and
+    val someLiveData: LiveData<String> = liveData {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                // Do something here in the background thread.
+            }
+        }
+
+        // Load some data using suspend function.
+        emit("abcd")
+    }
+
     override fun onCleared() {
-        disposable.clear()
         super.onCleared()
+        disposable.dispose()
     }
 
     private fun getRepoData(repoNameList: MutableLiveData<List<RepoItemData>>) {
