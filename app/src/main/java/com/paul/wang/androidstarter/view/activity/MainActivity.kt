@@ -2,6 +2,7 @@ package com.paul.wang.androidstarter.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -39,5 +40,24 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.repoListLiveData.observe(this, { repoNameList ->
             mainAdapter.repoItemData = repoNameList
         })
+    }
+
+    /**
+     * System will call this after onStart().
+     */
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+
+        // Some code here.
+    }
+
+    /**
+     * This might get called any time in between onPause to onDestroy by the system. Or not, if user clicks on back button, or when user doesn't expect UI to be restored.
+     */
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
+        // Some code here.
+
     }
 }
